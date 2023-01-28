@@ -213,4 +213,5 @@ function mainFunction(elements) {
 
 let elements = document.querySelectorAll("input, textarea");
 mainFunction(elements);
-alert("Done");
+
+alert("Processing finished!");
