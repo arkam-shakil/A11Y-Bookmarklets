@@ -1,4 +1,4 @@
-let elements = document.querySelectorAll("a, button, [role='button'], input, [tabindex='0']");
+let elements = document.querySelectorAll("a, button, [role='button'], [role='link'], input, textarea, select, [tabindex='0']");
 
 for (let i=0; i<elements.length; i++) {
 	elements[i].addEventListener("focus", function() {
