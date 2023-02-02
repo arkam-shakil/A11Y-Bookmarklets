@@ -201,7 +201,7 @@ function mainFunction(elements) {
 	createA11YContrastResultTableRowHeader();
 
 	for (let i=0; i<elements.length; i++) {
-		if ((elements[i].getAttribute("type") == "hidden") || (elements[i].getAttribute("type") == "submit")) {
+		if ((elements[i].getAttribute("type") == "hidden") || (elements[i].getAttribute("type") == "submit") || (elements[i].getAttribute("type") == "image") || (elements[i].getAttribute("type") == "button") || (elements[i].getAttribute("type") == "color") || (elements[i].getAttribute("type") == "file") || (elements[i].getAttribute("type") == "range") || (elements[i].getAttribute("type") == "reset")) {
 			continue;
 		}
 		let contrastRatio = calculateContrastRatio(elements[i]);
