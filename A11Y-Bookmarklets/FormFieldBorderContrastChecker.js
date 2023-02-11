@@ -190,7 +190,7 @@ function calculateContrastRatio(element) {
 	finalContrastRatio = contrast_ratio.toFixed(1) + ":1";
 //alert(finalContrastRatio);
 	details.push(finalContrastRatio);
-	details.push(element.innerHTML);
+	details.push(element.parentNode.innerHTML);
 
 	return details;
 }

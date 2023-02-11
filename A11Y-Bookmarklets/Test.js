@@ -1,4 +1,9 @@
-document.body.appendChild(document.createElement('script')).src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js';
+const allElements = document.querySelectorAll('*');
 
-let a11y = $("*");
-alert(a11y.length);
+const clickedElements = Array.from(allElements).filter(function(element) {
+  const listeners = getEventListeners(element);
+  return listeners && listeners.click && listeners.click.length > 0;
+});
+
+//console.log('Elements with a click event attached:', clickedElements);
+document.querySelector("body").innerText += 'Elements with a click event attached:' + clickedElements;
