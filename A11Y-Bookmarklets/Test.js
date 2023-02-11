@@ -7,3 +7,4 @@ const clickedElements = Array.from(allElements).filter(function(element) {
 
 //console.log('Elements with a click event attached:', clickedElements);
 document.querySelector("body").innerText += 'Elements with a click event attached:' + clickedElements;
+alert("DONE");
