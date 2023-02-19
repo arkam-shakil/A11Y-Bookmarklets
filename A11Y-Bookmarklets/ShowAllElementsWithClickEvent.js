@@ -48,7 +48,7 @@ function createA11YResultTableCell(data) {
 }
 
 function createA11YResultTableRowHeader() {
-	let details = ["ID", "Content", "Inserted Using", "Forground Color", "SRC", "Action"];
+	let details = ["ID", "Element Name", "Element Type", "Function Names", "SRC", "Action"];
 	let row = document.createElement("tr");
 	row.setAttribute("role", "row");
 	row.setAttribute("id", "a11yResultTableColumnwHeader");
@@ -77,71 +77,28 @@ function createA11YResultTableRowBody(details, element) {
 	document.querySelector("#a11yResultTable").appendChild(row);
 }
 
-function getPseudoElementForgroundColor(element, pseudoElement) {
-	let computedStyle = window.getComputedStyle(element, pseudoElement);
-	return computedStyle.getPropertyValue("color");
-}
-
-function formatRGBColorCode(RGBColor) {
-	let formattedColor1 = RGBColor.split("(");
-	let formattedColor2 = formattedColor1[1].split(")");
-			let finalColorCode = formattedColor2[0].split(",");
-	return finalColorCode;
-}
-
-function rgbToHex(rgb) {
-	for (let i=0; i<rgb.length; i++) {
-		rgb[i] = parseInt(rgb[i]);
-		
-	}
-	let r = rgb[0].toString(16);
-	let g = rgb[1].toString(16);
-	let b = rgb[2].toString(16);
-	let hex = r + g + b;
-	hex = hex.toUpperCase();
-	return "#" + hex;
-}
-
 function mainFunction() {
-	let elements = document.querySelectorAll("*");
+	let selectorOfSectionToBeProcessed = prompt("Enter the selector of section you want to automate (Enter 'body' if you want to process entire page):", "body");
+	let elements = document.querySelectorAll(selectorOfSectionToBeProcessed + " *");
+	let clickedElements = Array.from(elements).filter(function(element) {
+		let listeners = getEventListeners(element);
+		return listeners && listeners.click && listeners.click.length > 0;
+	});
+	
 	createA11YResult();
 	createA11YResultTable();
 	createA11YResultTableRowHeader();
-
-	for (let element of elements) {
-		let computedStyleBefore = window.getComputedStyle(element, "::before");
-		let computedStyleAfter = window.getComputedStyle(element, "::after");
+	
+	for (let i=0; i<clickedElements.length; i++) {
 		let details = [];
+		let functionNames = getEventListeners(clickedElements[i]).click.map(listener => listener.name);
 		
-		if (window.getComputedStyle(element, null).display == "none") {
-			continue;
-		}
-		else {
-			if (computedStyleBefore.content !== "none") {
-				let RGBColor = getPseudoElementForgroundColor(element, "::after");
-				let formattedRGBColorCode = formatRGBColorCode(RGBColor);
-				let PseudoElementForgroundColor = rgbToHex(formattedRGBColorCode);
-				
-				details.push(computedStyleBefore.content);
-				details.push("::before");
-				details.push(PseudoElementForgroundColor);
-				details.push(element.parentNode.innerHTML);
-				createA11YResultTableRowBody(details, element.parentNode);
-				count++;
-			}
-			if (computedStyleAfter.content !== "none") {
-				let RGBColor = getPseudoElementForgroundColor(element, "::after");
-				let formattedRGBColorCode = formatRGBColorCode(RGBColor);
-				let PseudoElementForgroundColor = rgbToHex(formattedRGBColorCode);
-				
-				details.push(computedStyleBefore.content);
-				details.push("::after");
-				details.push(PseudoElementForgroundColor);
-				details.push(element.parentNode.innerHTML);
-				createA11YResultTableRowBody(details, element.parentNode);
-				count++;
-			}
-		}
+		details.push(clickedElements[i].innerText);
+		details.push(clickedElements[i]);
+		details.push(functionNames);
+		details.push(clickedElements[i].parentNode.innerHTML);
+		createA11YResultTableRowBody(details, clickedElements[i]);
+		count++;
 	}
 	headerCellMarkUpForResultTable();
 }

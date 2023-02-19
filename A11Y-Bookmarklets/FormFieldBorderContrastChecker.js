@@ -1,5 +1,14 @@
 let count = 1;
 
+function showDetailsAdjacentToRespectedElement(details, element) {
+	let p = document.createElement("p");
+	
+	let result = "Visual boundary color: " + details[0] + "; Background: " + details[1] + "; Current contrast ratio: " + details[3];
+	p.innerText = result;
+	element.parentNode.insertBefore(p, element.nextSibling);
+	element.setAttribute("aria-description", result);
+}
+
 function headerCellMarkUpForResultTable() {
 	let th = document.querySelectorAll("#a11yContrastResultTableColumnwHeader td");
 	let td = document.querySelectorAll("#a11yContrastResultTable tr td:first-child");
@@ -204,14 +213,16 @@ function mainFunction(elements) {
 		if ((elements[i].getAttribute("type") == "hidden") || (elements[i].getAttribute("type") == "submit") || (elements[i].getAttribute("type") == "image") || (elements[i].getAttribute("type") == "button") || (elements[i].getAttribute("type") == "color") || (elements[i].getAttribute("type") == "file") || (elements[i].getAttribute("type") == "range") || (elements[i].getAttribute("type") == "reset")) {
 			continue;
 		}
-		let contrastRatio = calculateContrastRatio(elements[i]);
-		createA11YContrastResultTableRowBody(contrastRatio, elements[i]);
+		let contrastRatioDetails = calculateContrastRatio(elements[i]);
+		createA11YContrastResultTableRowBody(contrastRatioDetails, elements[i]);
+		showDetailsAdjacentToRespectedElement(contrastRatioDetails, elements[i]);
 		count++;
 	}
 	headerCellMarkUpForResultTable();
 }
 
-let elements = document.querySelectorAll("input, textarea");
+let selectorOfSectionToBeProcessed = prompt("Enter the selector of section you want to automate (Enter 'body' if you want to process entire page):", "body");
+let elements = document.querySelectorAll(selectorOfSectionToBeProcessed + " input, textarea");
 mainFunction(elements);
 
 alert("Processing finished!");

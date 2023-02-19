@@ -1,0 +1,20 @@
+Paul Jadam's Bookmarklets: 
+https://pauljadam.com/bookmarklets.html.
+
+Text Spacing Bookmark:
+javascript:(function(){var d=document,id='phltsbkmklt',el=d.getElementById(id),f=d.querySelectorAll('iframe'),i=0,l=f.length;if(el){el.remove(); if(l){for(i=0;i<l;i++){try{f[i].contentWindow.document.getElementById(id).remove();}catch(e){console.log(e)}}}}else{s=d.createElement('style');s.id=id;s.appendChild(d.createTextNode('*{line-height:1.5 !important;letter-spacing:0.12em !important;word-spacing:0.16em !important;}p{margin-bottom:2em !important;}'));d.getElementsByTagName('head')[0].appendChild(s);for(i=0;i<l;i++){try{f[i].contentWindow.document.getElementsByTagName('head')[0].appendChild(s.cloneNode(true));}catch(e){console.log(e)}}}})();
+
+LightFocusIndicator Bookmark:
+javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://cdn.jsdelivr.net/gh/arkam-shakil/A11Y-Bookmarklets@main/A11Y-Bookmarklets/LightFocusIndicator.js';var iframes=document.getElementsByTagName('iframe');for(i=0;i<iframes.length;i++) {iframes[i].contentDocument.body.appendChild(document.createElement('script')).src='https://cdn.jsdelivr.net/gh/arkam-shakil/A11Y-Bookmarklets@main/A11Y-Bookmarklets/LightFocusIndicator.js';}})();
+
+DarkFocusIndicator Bookmark:
+javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://cdn.jsdelivr.net/gh/arkam-shakil/A11Y-Bookmarklets@main/A11Y-Bookmarklets/DarkFocusIndicator.js';var iframes=document.getElementsByTagName('iframe');for(i=0;i<iframes.length;i++) {iframes[i].contentDocument.body.appendChild(document.createElement('script')).src='https://cdn.jsdelivr.net/gh/arkam-shakil/A11Y-Bookmarklets@main/A11Y-Bookmarklets/DarkFocusIndicator.js';}})();
+
+RemoveAccessibleLabelOfControl Bookmark:
+javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://cdn.jsdelivr.net/gh/arkam-shakil/A11Y-Bookmarklets@main/A11Y-Bookmarklets/RemoveAccessibleLabelOfControl.js';var iframes=document.getElementsByTagName('iframe');for(i=0;i<iframes.length;i++) {iframes[i].contentDocument.body.appendChild(document.createElement('script')).src='https://cdn.jsdelivr.net/gh/arkam-shakil/A11Y-Bookmarklets@main/A11Y-Bookmarklets/RemoveAccessibleLabelOfControl.js';}})();
+
+FormFieldBorderContrastChecker Bookmark:
+javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://cdn.jsdelivr.net/gh/arkam-shakil/A11Y-Bookmarklets@main/A11Y-Bookmarklets/FormFieldBorderContrastChecker.js';var iframes=document.getElementsByTagName('iframe');for(i=0;i<iframes.length;i++) {iframes[i].contentDocument.body.appendChild(document.createElement('script')).src='https://cdn.jsdelivr.net/gh/arkam-shakil/A11Y-Bookmarklets@main/A11Y-Bookmarklets/FormFieldBorderContrastChecker.js';}})();
+
+autoCompleteAttributeChecker Bookmark:
+javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://cdn.jsdelivr.net/gh/arkam-shakil/A11Y-Bookmarklets@main/A11Y-Bookmarklets/autoCompleteAttributeChecker.js';var iframes=document.getElementsByTagName('iframe');for(i=0;i<iframes.length;i++) {iframes[i].contentDocument.body.appendChild(document.createElement('script')).src='https://cdn.jsdelivr.net/gh/arkam-shakil/A11Y-Bookmarklets@main/A11Y-Bookmarklets/autoCompleteAttributeChecker.js';}})();
