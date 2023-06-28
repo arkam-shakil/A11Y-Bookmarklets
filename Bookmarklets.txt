@@ -18,3 +18,6 @@ javascript:(function(){document.body.appendChild(document.createElement('script'
 
 autoCompleteAttributeChecker Bookmark:
 javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://cdn.jsdelivr.net/gh/arkam-shakil/A11Y-Bookmarklets@main/A11Y-Bookmarklets/autoCompleteAttributeChecker.js';var iframes=document.getElementsByTagName('iframe');for(i=0;i<iframes.length;i++) {iframes[i].contentDocument.body.appendChild(document.createElement('script')).src='https://cdn.jsdelivr.net/gh/arkam-shakil/A11Y-Bookmarklets@main/A11Y-Bookmarklets/autoCompleteAttributeChecker.js';}})();
+
+Pseudo-Elements Bookmark:
+javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://cdn.jsdelivr.net/gh/arkam-shakil/A11Y-Bookmarklets@main/A11Y-Bookmarklets/Pseudo-Elements.js';var iframes=document.getElementsByTagName('iframe');for(i=0;i<iframes.length;i++) {iframes[i].contentDocument.body.appendChild(document.createElement('script')).src='https://cdn.jsdelivr.net/gh/arkam-shakil/A11Y-Bookmarklets@main/A11Y-Bookmarklets/Pseudo-Elements.js';}})();
