@@ -102,6 +102,9 @@
       const listItem = document.createElement('li');
       listItem.textContent = el.innerText || 'No Inner Text || ' + el.outerHTML;
       overlapList.appendChild(listItem);
+      
+      //Highlighting the control
+      el.style.border = '2px solid red';
     });
     resultDiv.appendChild(overlapList);
   }
@@ -113,6 +116,9 @@
       const listItem = document.createElement('li');
       listItem.textContent = el.innerText || 'No Inner Text || ' + el.outerHTML || 'No HTML Source';
       smallerSizeList.appendChild(listItem);
+      
+      //Highlighting the control
+      el.style.border = '2px solid red';
     });
     resultDiv.appendChild(smallerSizeList);
   }
